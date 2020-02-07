@@ -1,0 +1,23 @@
+---
+# Running the Sonata Infrastructure abstraction k8s Wrapper (Docker container)
+- debug: msg="##### IA K8s Wrapper {{ lookup('pipe', 'date +%Y%m%d-%H%M%S') }}"
+- name: Infrastructure abstraction K8s Wrapper (Docker container)
+  docker_container:
+    name: tng-sp-ia-k8s
+    image: "tsoenen/sonmano-k8swrapper"
+    env:
+      broker_host: amqp://guest:guest@son-broker:5672/%2F
+      broker_exchange: son-kernel
+      # topic_prefix: "emu"
+      # path_to_nbi: "http://pre-int-sp-ath.5gtango.eu:8083/api/ia/v1"
+    restart_policy: "always"
+    network_mode: bridge
+    networks:
+      - name: "{{ docker_network_name }}"
+        aliases:
+          - tng-sp-ia-k8s
+    state: started
+    recreate: yes
+    pull: false
+  async: 20
+  poll: 0

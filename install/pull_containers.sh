@@ -8,6 +8,7 @@ docker pull tsoenen/sonmano-flm
 docker pull tsoenen/sonmano-plm
 docker pull tsoenen/sonmano-smr
 docker pull tsoenen/sonmano-emuwrapper
+docker pull tsoenen/sonmano-k8swrapper
 docker pull mpeuster/vim-emu
 docker pull mongo
 docker pull rabbitmq:3.6.15-management
